@@ -1,0 +1,8 @@
+version: '3'
+services:
+  ubuntu:
+    privileged: true
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    command: tail -F get-docker.sh
