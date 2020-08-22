@@ -1,20 +1,22 @@
 apiVersion: apps/v1
-kind: ReplicaSet
+kind: Deployment
 metadata:
-  name: replicaset-nginx
+  name: deployment-recreate
 spec:
   replicas: 3
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
-      app: my-nginx-pods-label
+      app: nginx
   template:
     metadata:
-      name: my-nginx-pod
-      labels: 
-        app: my-nginx-pods-label
+      name: nginx
+      labels:
+        app: nginx
     spec:
       containers:
       - name: nginx
-        image: nginx:latest
+        image: nginx:1.15
         ports:
         - containerPort: 80

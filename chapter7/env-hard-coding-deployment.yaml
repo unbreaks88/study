@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-nginx-deployment
+  name: env-hard-coding-deployment
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: my-nginx
@@ -15,7 +15,9 @@ spec:
     spec:
       containers:
       - name: nginx
+        env:
+        - name: LOG_LEVEL
+          value: INFO
         image: nginx:1.10
         ports:
         - containerPort: 80
-
